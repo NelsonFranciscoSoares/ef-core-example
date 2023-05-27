@@ -1,0 +1,33 @@
+.Instalação do CLI do EntityFramework Core
+dotnet tool install --global dotnet-ef --version 3.1.5
+
+.Ver detalhes da ferramenta instalada
+dotnet ef
+
+.Instalar pacote de migrations do EF Core
+dotnet add .\Curso\CursoEFCore.csproj package Microsoft.EntityFrameworkCore.Design --version 3.1.5
+dotnet add .\Curso\CursoEFCore.csproj package Microsoft.EntityFrameworkCore.Tools --version 3.1.5
+
+.Obter help do EntityFramework (Powershell)
+.get-help about_entity
+
+.Adicionar primeira migração
+dotnet ef migrations add [PrimeiraMigracao] --project .\Curso\CursoEFCore.csproj -c ApplicationDbContext
+
+.Geração de script sql das migrações
+dotnet ef migrations script --project .\Curso\CursoEFCore.csproj -c ApplicationDbContext -o .\Curso\Data\Scripts\PrimeiraMigracao.sql
+
+.Actualizar banco de dados com migração
+dotnet ef database update --project .\Curso\CursoEFCore.csproj -v 
+
+.Geração de scripts sql idempotentes
+dotnet ef migrations script --project .\Curso\CursoEFCore.csproj -o .\Curso\Data\Scripts\Idempotent.sql --idempotent
+
+.Actualizar banco de dados para uma específica migração
+dotnet ef database update PrimeiraMigracao
+
+.Excluir última migração
+dotnet ef migrations remove --project \Curso\CursoEFCore.csproj
+
+.Instalação do Dotnet-script
+dotnet tool install -g dotnet-script
